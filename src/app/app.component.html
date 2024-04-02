@@ -1,17 +1,20 @@
-<!-- NG-ZORRO -->
-<a
-  href="https://github.com/NG-ZORRO/ng-zorro-antd"
-  target="_blank"
-  style="
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  "
->
-  <img
-    height="300"
-    src="https://imgs.search.brave.com/JfTWWOHBCb8JO73mz-3sqQY_0Opph5sA3Phib2jrbe4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hLmZz/ZG4uY29tL2FsbHVy/YS9zL25nLXpvcnJv/L2ljb24_YmYxN2Fk/NDVhZTFjYjQ5ZjMz/N2M2NmY3NTExNjcz/YTI3ZmJiNzQ2ZmFl/NTU2MzQzYzA1MDM4/YjQ3YjAzNTQyNz8m/dz05MA.jpeg"
-  />
-</a>
+<div>
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">Car Rental Service</a>
+    </div>
+    <div class="nav-links">
+      <a
+        nz-button
+        nzType="link"
+        routerLink="/register"
+        routerLinkActive="active"
+        >Sign Up</a
+      >
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active"
+        >Login</a
+      >
+    </div>
+  </nz-header>
+</div>
+<router-outlet></router-outlet>
