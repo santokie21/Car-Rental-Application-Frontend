@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { AtuhService } from '../../services/auth/atuh.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +11,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private authService: AtuhService,
+    private messageService: NzMessageService,
+    private router: Router) { }
 
   isSpinning: boolean = false;
   signUpForm!: FormGroup;
@@ -32,6 +38,16 @@ export class SignupComponent implements OnInit {
   }
 
   register() {
+    this.authService.register(this.signUpForm.value).subscribe((res) => {
+      console.log(res);
+      if (res.id != null) {
+        this.messageService.success('User registered successfully', { nzDuration: 4000 });
+        this.router.navigateByUrl("/login");
+      }
+      else {
+        this.messageService.error('User registration failed', { nzDuration: 4000 });
+      }
+    })
     console.log(this.signUpForm.value);
   }
 }
